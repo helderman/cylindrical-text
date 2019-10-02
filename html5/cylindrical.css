@@ -1,0 +1,191 @@
+body {
+	background: black;
+	color: red;
+
+	/* prevent scrollbars */
+	margin: 0;
+}
+
+.cylinder {
+	/* give the children room to position themselves */
+	position: absolute;
+	width: 100%;
+	height: 100%;
+
+	/* prevent horizontal scrollbar */
+	overflow: hidden;
+
+	/* text properties */
+	font: 200px sans-serif;
+
+	/* camera distance; the smaller the value,
+	 * the more the text shrinks as it moves backward */
+	perspective: 4em;
+}
+
+/* children */
+
+.cylinder > div {
+	/* center */
+	position: absolute;
+	left: 50%;
+	top: 50%;
+
+	/* width of one segment */
+	width: 1em;
+
+	/* just enough to prevent text being clipped at the bottom */
+	height: 1.25em;
+
+	/* clip text */
+	overflow: hidden;
+
+	/* radius of cylinder; to seamlessly stitch the segments together */
+	/* 0.5 * segment_width / tan(pi / no_of_segments_making_full_circle) */
+	transform-origin: center center -2.352315em;
+
+	/* duration must match animation delays specified below */
+	animation: rotation 3s linear infinite, shade 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes rotation {
+	from { transform: translate(-50%, -50%) rotateY(1turn); }
+	to   { transform: translate(-50%, -50%) rotateY(0turn); }
+}
+
+@keyframes shade {
+	from { opacity: 1;   }
+	to   { opacity: 0.5; }
+}
+
+/* grandchildren */
+
+.cylinder > div > div {
+	/* allow specific horizontal offset for the text of each segment */
+	position: absolute;
+
+	/* keep all text on the same line */
+	white-space: nowrap;
+}
+
+.cylinder > div > div::before {
+	/* by putting the text in CSS, we don't have to repeat it 15 times */
+	content: "Cylindrically Scrolling Text";
+}
+
+/* horizontal offset for the text of each individual segment */
+
+.cylinder > div:nth-child(2) > div {
+	left: -1em;
+}
+
+.cylinder > div:nth-child(3) > div {
+	left: -2em;
+}
+
+.cylinder > div:nth-child(4) > div {
+	left: -3em;
+}
+
+.cylinder > div:nth-child(5) > div {
+	left: -4em;
+}
+
+.cylinder > div:nth-child(6) > div {
+	left: -5em;
+}
+
+.cylinder > div:nth-child(7) > div {
+	left: -6em;
+}
+
+.cylinder > div:nth-child(8) > div {
+	left: -7em;
+}
+
+.cylinder > div:nth-child(9) > div {
+	left: -8em;
+}
+
+.cylinder > div:nth-child(10) > div {
+	left: -9em;
+}
+
+.cylinder > div:nth-child(11) > div {
+	left: -10em;
+}
+
+.cylinder > div:nth-child(12) > div {
+	left: -11em;
+}
+
+.cylinder > div:nth-child(13) > div {
+	left: -12em;
+}
+
+.cylinder > div:nth-child(14) > div {
+	left: -13em;
+}
+
+.cylinder > div:nth-child(15) > div {
+	left: -14em;
+}
+
+/* time offset for each individual segment */
+/* (animation's duration divided across 15 segments) */
+
+.cylinder > div:nth-child(1) {
+	animation-delay: -2.8s;
+}
+
+.cylinder > div:nth-child(2) {
+	animation-delay: -2.6s;
+}
+
+.cylinder > div:nth-child(3) {
+	animation-delay: -2.4s;
+}
+
+.cylinder > div:nth-child(4) {
+	animation-delay: -2.2s;
+}
+
+.cylinder > div:nth-child(5) {
+	animation-delay: -2.0s;
+}
+
+.cylinder > div:nth-child(6) {
+	animation-delay: -1.8s;
+}
+
+.cylinder > div:nth-child(7) {
+	animation-delay: -1.6s;
+}
+
+.cylinder > div:nth-child(8) {
+	animation-delay: -1.4s;
+}
+
+.cylinder > div:nth-child(9) {
+	animation-delay: -1.2s;
+}
+
+.cylinder > div:nth-child(10) {
+	animation-delay: -1.0s;
+}
+
+.cylinder > div:nth-child(11) {
+	animation-delay: -0.8s;
+}
+
+.cylinder > div:nth-child(12) {
+	animation-delay: -0.6s;
+}
+
+.cylinder > div:nth-child(13) {
+	animation-delay: -0.4s;
+}
+
+.cylinder > div:nth-child(14) {
+	animation-delay: -0.2s;
+}
